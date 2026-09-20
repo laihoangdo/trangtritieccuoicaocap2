@@ -17,6 +17,8 @@ const RAW_BRAND_INFO = {
   facebookText: 'Dã Quỳ Decor & Event',
   tiktok: 'https://www.tiktok.com/@daquydecor',
   tiktokText: '@daquydecor',
+  youtube: 'https://www.youtube.com/@daquydecor2541',
+  youtubeText: '@daquydecor2541',
   openingHours: '07:30 - 22:00 (Tất cả các ngày trong tuần)',
   experienceYears: '10+',
   completedEvents: '5.000+',

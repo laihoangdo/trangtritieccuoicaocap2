@@ -9,7 +9,8 @@ import {
   CheckCircle2, 
   CreditCard,
   ChevronRight,
-  ExternalLink
+  ExternalLink,
+  Youtube
 } from 'lucide-react';
 import { BRAND_INFO } from '../data/mockData';
 
@@ -199,6 +200,35 @@ export const Footer: React.FC = () => {
                 className="block text-center bg-blue-600 hover:bg-blue-700 text-white text-[11px] font-semibold py-1.5 rounded transition-colors"
               >
                 Ghé Thăm Fanpage Facebook
+              </a>
+            </div>
+
+            {/* YouTube Box */}
+            <div className="bg-gray-800/90 rounded-lg p-3 border border-gray-700 mb-3">
+              <div className="flex items-center gap-2 mb-2">
+                <div className="w-6 h-6 rounded-full bg-red-600 text-white flex items-center justify-center shrink-0">
+                  <Youtube className="w-3.5 h-3.5 fill-white" />
+                </div>
+                <div className="leading-tight">
+                  <a 
+                    href={BRAND_INFO.youtube} 
+                    target="_blank" 
+                    rel="noreferrer"
+                    className="font-bold text-xs text-white hover:text-red-400 flex items-center gap-1"
+                  >
+                    <span>Kênh YouTube Dã Quỳ Decor</span>
+                    <ExternalLink className="w-3 h-3" />
+                  </a>
+                  <span className="text-[10px] text-gray-400 block">{BRAND_INFO.youtubeText}</span>
+                </div>
+              </div>
+              <a 
+                href={BRAND_INFO.youtube}
+                target="_blank"
+                rel="noreferrer"
+                className="block text-center bg-red-600 hover:bg-red-700 text-white text-[11px] font-semibold py-1.5 rounded transition-colors"
+              >
+                Đăng Ký Kênh YouTube
               </a>
             </div>
 

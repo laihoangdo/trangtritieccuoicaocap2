@@ -2,5 +2,7 @@
   "name": "Dã Quỳ Decor & Event - Trang Trí Tiệc Cưới & Gia Tiên",
   "description": "Dịch vụ trang trí gia tiên, cổng hoa cưới trọn gói cao cấp và tiết kiệm tại TP.HCM. Hotline: 0931883547 - Địa chỉ: 33/6 Phan Văn Hớn, Q.12, TP.HCM.",
   "requestFramePermissions": [],
-  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
 }

@@ -9,14 +9,17 @@ import {
   ChevronRight, 
   ShieldCheck, 
   Heart, 
-  PhoneCall,
-  Calendar,
-  Layers,
-  Award,
-  Clock,
-  Palette,
-  BadgeDollarSign,
-  HeartHandshake
+  PhoneCall, 
+  Calendar, 
+  Layers, 
+  Award, 
+  Clock, 
+  Palette, 
+  BadgeDollarSign, 
+  HeartHandshake,
+  Youtube,
+  Play,
+  ExternalLink
 } from 'lucide-react';
 import { 
   BRAND_INFO, 
@@ -70,16 +73,32 @@ export const HomePage: React.FC<HomePageProps> = ({ onOpenQuoteModal }) => {
       ctaLink: '/dich-vu-cuoi',
       secondaryText: 'Nhận Báo Giá',
       badge: 'ĐỘI NGŨ 10+ NĂM KINH NGHIỆM'
+    },
+    {
+      isVideo: true,
+      videoId: 'vRDCtZoYkOI',
+      videoUrl: 'https://www.youtube.com/watch?v=vRDCtZoYkOI',
+      image: getAssetUrl('/images/cuoi4.jpg'),
+      subheading: 'Kênh YouTube Chính Thức · @daquydecor2541',
+      title: 'VIDEO THỰC TẾ TRANG TRÍ GIA TIÊN & TIỆC CƯỚI',
+      desc: 'Chiêm ngưỡng video thực tế các mẫu bàn thờ gia tiên, cổng hoa cưới và sảnh tiệc lộng lẫy do đội ngũ Dã Quỳ Decor trực tiếp thi công cho hơn 5.000+ cặp đôi tại TP.HCM.',
+      ctaText: 'Xem Trên YouTube',
+      ctaLink: 'https://www.youtube.com/watch?v=vRDCtZoYkOI',
+      secondaryText: 'Tư Vấn Miễn Phí',
+      badge: 'VIDEO THỰC TẾ 4K'
     }
   ];
 
-  // Auto advance slide
+  // Auto advance slide (tạm dừng khi đang xem slide video)
   useEffect(() => {
+    if (bannerSlides[currentSlide]?.isVideo) {
+      return;
+    }
     const timer = setInterval(() => {
       setCurrentSlide((prev) => (prev + 1) % bannerSlides.length);
     }, 6000);
     return () => clearInterval(timer);
-  }, [bannerSlides.length]);
+  }, [bannerSlides.length, currentSlide]);
 
   const nextSlide = () => setCurrentSlide((prev) => (prev + 1) % bannerSlides.length);
   const prevSlide = () => setCurrentSlide((prev) => (prev - 1 + bannerSlides.length) % bannerSlides.length);
@@ -101,7 +120,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onOpenQuoteModal }) => {
   return (
     <div className="w-full bg-[#f8f9fa]">
       {/* 1. HERO BANNER SLIDER */}
-      <section className="relative w-full h-[480px] sm:h-[540px] md:h-[620px] overflow-hidden bg-gray-900">
+      <section className="relative w-full min-h-[500px] sm:min-h-[540px] md:h-[620px] overflow-hidden bg-gray-900">
         {bannerSlides.map((slide, index) => (
           <div
             key={index}
@@ -116,47 +135,151 @@ export const HomePage: React.FC<HomePageProps> = ({ onOpenQuoteModal }) => {
                 alt={slide.title}
                 className="w-full h-full object-cover object-center transform scale-105 transition-transform duration-10000 ease-out"
               />
-              <div className="absolute inset-0 bg-gradient-to-r from-black/85 via-black/60 to-black/30"></div>
+              <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/75 to-black/50"></div>
             </div>
 
             {/* Slide Content */}
-            <div className="relative z-20 max-w-7xl mx-auto h-full px-4 sm:px-6 lg:px-8 flex flex-col justify-center text-white">
-              <div className="max-w-2xl">
-                <span className="inline-flex items-center gap-1.5 bg-rose-600/90 text-white text-[11px] sm:text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full mb-4 shadow-md">
-                  <Sparkles className="w-3.5 h-3.5" />
-                  {slide.badge}
-                </span>
+            {slide.isVideo ? (
+              <div className="relative z-20 max-w-7xl mx-auto h-full px-4 sm:px-6 lg:px-8 flex items-center py-10 text-white">
+                <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-center w-full">
+                  {/* Left Column: Description & Call-to-action */}
+                  <div className="lg:col-span-7 xl:col-span-7 text-left">
+                    <span className="inline-flex items-center gap-1.5 bg-red-600 text-white text-[11px] sm:text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full mb-3 shadow-md">
+                      <Youtube className="w-3.5 h-3.5 fill-white text-white" />
+                      {slide.badge}
+                    </span>
 
-                <p className="text-amber-300 text-xs sm:text-sm font-semibold uppercase tracking-widest mb-2 font-sans">
-                  {slide.subheading}
-                </p>
+                    <p className="text-amber-300 text-xs sm:text-sm font-semibold uppercase tracking-widest mb-1.5 font-sans">
+                      {slide.subheading}
+                    </p>
 
-                <h1 className="font-serif text-2xl sm:text-4xl md:text-5xl font-black text-white leading-tight mb-4 tracking-tight drop-shadow-md">
-                  {slide.title}
-                </h1>
+                    <h1 className="font-serif text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black text-white leading-tight mb-3 tracking-tight drop-shadow-md">
+                      {slide.title}
+                    </h1>
 
-                <p className="text-gray-200 text-xs sm:text-base leading-relaxed mb-8 max-w-xl">
-                  {slide.desc}
-                </p>
+                    <p className="text-gray-200 text-xs sm:text-sm md:text-base leading-relaxed mb-6 max-w-xl">
+                      {slide.desc}
+                    </p>
 
-                <div className="flex flex-wrap items-center gap-3 sm:gap-4">
-                  <Link
-                    to={slide.ctaLink}
-                    className="bg-rose-700 hover:bg-rose-800 text-white font-bold text-xs sm:text-sm uppercase tracking-wider px-6 py-3.5 rounded-lg shadow-lg hover:shadow-rose-700/50 transition-all transform active:scale-95 flex items-center gap-2"
-                  >
-                    <span>{slide.ctaText}</span>
-                    <ArrowRight className="w-4 h-4" />
-                  </Link>
+                    <div className="flex flex-wrap items-center gap-3 sm:gap-4">
+                      <a
+                        href={slide.ctaLink}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="bg-red-600 hover:bg-red-700 text-white font-bold text-xs sm:text-sm uppercase tracking-wider px-5 py-3.5 rounded-lg shadow-lg hover:shadow-red-600/50 transition-all transform active:scale-95 flex items-center gap-2"
+                      >
+                        <Youtube className="w-4 h-4 fill-white text-white" />
+                        <span>{slide.ctaText}</span>
+                        <ExternalLink className="w-3.5 h-3.5" />
+                      </a>
 
-                  <button
-                    onClick={() => onOpenQuoteModal('Gia Tiên Trọn Gói')}
-                    className="bg-white/10 hover:bg-white/20 text-white border border-white/40 font-bold text-xs sm:text-sm uppercase tracking-wider px-6 py-3.5 rounded-lg backdrop-blur-xs transition-all cursor-pointer"
-                  >
-                    {slide.secondaryText}
-                  </button>
+                      <button
+                        onClick={() => onOpenQuoteModal('Gia Tiên Trọn Gói')}
+                        className="bg-white/10 hover:bg-white/20 text-white border border-white/40 font-bold text-xs sm:text-sm uppercase tracking-wider px-5 py-3.5 rounded-lg backdrop-blur-xs transition-all cursor-pointer"
+                      >
+                        {slide.secondaryText}
+                      </button>
+                    </div>
+                  </div>
+
+                  {/* Right Column: Embedded YouTube Player */}
+                  <div className="lg:col-span-5 xl:col-span-5 flex justify-center">
+                    <div className="w-full max-w-md lg:max-w-none bg-black/70 backdrop-blur-md rounded-2xl overflow-hidden border border-white/20 shadow-2xl ring-1 ring-amber-400/30">
+                      {/* Player Bar */}
+                      <div className="px-3.5 py-2.5 bg-gradient-to-r from-rose-950 via-rose-900 to-black flex items-center justify-between border-b border-white/10">
+                        <div className="flex items-center gap-2">
+                          <div className="w-6 h-6 rounded-full bg-red-600 flex items-center justify-center text-white shrink-0">
+                            <Youtube className="w-3.5 h-3.5 fill-white" />
+                          </div>
+                          <div className="leading-tight">
+                            <span className="block text-xs font-bold text-white truncate">Dã Quỳ Decor &amp; Event</span>
+                            <span className="text-[10px] text-amber-300">@daquydecor2541</span>
+                          </div>
+                        </div>
+
+                        <a
+                          href="https://www.youtube.com/@daquydecor2541"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-[11px] font-bold text-white bg-red-600 hover:bg-red-700 px-2.5 py-1 rounded-md transition-colors flex items-center gap-1 shadow-xs shrink-0"
+                        >
+                          <span>Kênh YouTube</span>
+                          <ExternalLink className="w-3 h-3" />
+                        </a>
+                      </div>
+
+                      {/* Video Embed Frame */}
+                      <div className="relative aspect-video w-full bg-black">
+                        {index === currentSlide ? (
+                          <iframe
+                            className="w-full h-full border-0"
+                            src="https://www.youtube.com/embed/vRDCtZoYkOI?rel=0"
+                            title="Dã Quỳ Decor & Event - Video Thực Tế Trang Trí Gia Tiên"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            allowFullScreen
+                          />
+                        ) : (
+                          <div className="w-full h-full flex items-center justify-center bg-gray-900 text-gray-400 text-xs">
+                            Đang tải video...
+                          </div>
+                        )}
+                      </div>
+
+                      {/* Footer Note */}
+                      <div className="px-3 py-2 bg-black/80 flex items-center justify-between text-[11px] text-gray-300">
+                        <span className="truncate pr-2">Clip thực tế các dự án gia tiên &amp; tiệc cưới</span>
+                        <a 
+                          href="https://www.youtube.com/watch?v=vRDCtZoYkOI" 
+                          target="_blank" 
+                          rel="noopener noreferrer"
+                          className="text-amber-400 hover:underline shrink-0 font-semibold"
+                        >
+                          Mở xem trên YouTube &rarr;
+                        </a>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
-            </div>
+            ) : (
+              <div className="relative z-20 max-w-7xl mx-auto h-full px-4 sm:px-6 lg:px-8 flex flex-col justify-center text-white">
+                <div className="max-w-2xl">
+                  <span className="inline-flex items-center gap-1.5 bg-rose-600/90 text-white text-[11px] sm:text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full mb-4 shadow-md">
+                    <Sparkles className="w-3.5 h-3.5" />
+                    {slide.badge}
+                  </span>
+
+                  <p className="text-amber-300 text-xs sm:text-sm font-semibold uppercase tracking-widest mb-2 font-sans">
+                    {slide.subheading}
+                  </p>
+
+                  <h1 className="font-serif text-2xl sm:text-4xl md:text-5xl font-black text-white leading-tight mb-4 tracking-tight drop-shadow-md">
+                    {slide.title}
+                  </h1>
+
+                  <p className="text-gray-200 text-xs sm:text-base leading-relaxed mb-8 max-w-xl">
+                    {slide.desc}
+                  </p>
+
+                  <div className="flex flex-wrap items-center gap-3 sm:gap-4">
+                    <Link
+                      to={slide.ctaLink}
+                      className="bg-rose-700 hover:bg-rose-800 text-white font-bold text-xs sm:text-sm uppercase tracking-wider px-6 py-3.5 rounded-lg shadow-lg hover:shadow-rose-700/50 transition-all transform active:scale-95 flex items-center gap-2"
+                    >
+                      <span>{slide.ctaText}</span>
+                      <ArrowRight className="w-4 h-4" />
+                    </Link>
+
+                    <button
+                      onClick={() => onOpenQuoteModal('Gia Tiên Trọn Gói')}
+                      className="bg-white/10 hover:bg-white/20 text-white border border-white/40 font-bold text-xs sm:text-sm uppercase tracking-wider px-6 py-3.5 rounded-lg backdrop-blur-xs transition-all cursor-pointer"
+                    >
+                      {slide.secondaryText}
+                    </button>
+                  </div>
+                </div>
+              </div>
+            )}
           </div>
         ))}
 

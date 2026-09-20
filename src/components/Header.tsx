@@ -10,7 +10,8 @@ import {
   ChevronDown, 
   Sparkles,
   CalendarDays,
-  FileText
+  FileText,
+  Youtube
 } from 'lucide-react';
 import { BRAND_INFO } from '../data/mockData';
 import { getAssetUrl } from '../utils/image';
@@ -79,6 +80,17 @@ export const Header: React.FC<HeaderProps> = ({ onOpenQuoteModal }) => {
               >
                 <span className="bg-blue-600 text-white rounded-full w-4 h-4 flex items-center justify-center text-[10px] font-bold">f</span>
                 <span className="hidden sm:inline">Facebook</span>
+              </a>
+              <span className="text-gray-600">|</span>
+              <a 
+                href={BRAND_INFO.youtube} 
+                target="_blank" 
+                rel="noreferrer" 
+                className="flex items-center gap-1 text-red-400 hover:text-red-300 transition-colors font-medium"
+                title="Kênh YouTube Dã Quỳ Decor"
+              >
+                <Youtube className="w-3.5 h-3.5 fill-red-500 text-red-500" />
+                <span className="hidden sm:inline">YouTube</span>
               </a>
               <span className="text-gray-600">|</span>
               <a 
