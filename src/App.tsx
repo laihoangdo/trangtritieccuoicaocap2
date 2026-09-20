@@ -32,7 +32,7 @@ export default function App() {
   };
 
   return (
-    <BrowserRouter>
+    <BrowserRouter basename={import.meta.env.BASE_URL}>
       <ScrollToTop />
       <div className="min-h-screen flex flex-col bg-white text-gray-800 font-sans selection:bg-rose-700 selection:text-white">
         {/* Header */}

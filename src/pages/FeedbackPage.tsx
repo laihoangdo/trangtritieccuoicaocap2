@@ -1,6 +1,7 @@
 import React from 'react';
 import { Star, Heart, CheckCircle2, MessageSquareHeart } from 'lucide-react';
 import { TESTIMONIALS, BRAND_INFO } from '../data/mockData';
+import { getAssetUrl } from '../utils/image';
 
 export const FeedbackPage: React.FC = () => {
   return (
@@ -45,7 +46,7 @@ export const FeedbackPage: React.FC = () => {
               service: 'Gia Tiên Tông Nâu Vintage & Cổng Hoa',
               rating: 5,
               comment: 'Tone màu nâu vintage lên hình rất điện ảnh và sang chảnh. Ai đến dự cũng khen bàn thờ gia tiên nhìn tôn nghiêm mà tinh tế. Cảm ơn Dã Quỳ Decor rất nhiều!',
-              avatar: '/images/cuoi1.jpg'
+              avatar: getAssetUrl('/images/cuoi1.jpg')
             },
             {
               id: 't6',
@@ -55,7 +56,7 @@ export const FeedbackPage: React.FC = () => {
               service: 'Rạp Cưới & Bàn Ghế Tiffany',
               rating: 5,
               comment: 'Rạp cưới dựng rất chắc chắn, hoa trang trí tươi tắn và đồng bộ màu. Các bạn thợ đến dọn dẹp sau tiệc rất sạch sẽ, đúng giờ.',
-              avatar: '/images/cuoi4.jpg'
+              avatar: getAssetUrl('/images/cuoi4.jpg')
             }
           ]).map((item) => (
             <div

@@ -13,6 +13,7 @@ import {
   FileText
 } from 'lucide-react';
 import { BRAND_INFO } from '../data/mockData';
+import { getAssetUrl } from '../utils/image';
 
 interface HeaderProps {
   onOpenQuoteModal: () => void;
@@ -109,7 +110,9 @@ export const Header: React.FC<HeaderProps> = ({ onOpenQuoteModal }) => {
                 alt={BRAND_INFO.name} 
                 className="h-11 sm:h-12 w-auto object-contain drop-shadow-xs group-hover:scale-105 transition-transform"
                 onError={(e) => {
-                  (e.target as HTMLImageElement).src = '/images/da-quy.png';
+                  const target = e.target as HTMLImageElement;
+                  target.onerror = null;
+                  target.src = getAssetUrl('images/da-quy.png');
                 }}
               />
               <div className="hidden sm:block">

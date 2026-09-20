@@ -12,6 +12,7 @@ import {
   Target 
 } from 'lucide-react';
 import { BRAND_INFO } from '../data/mockData';
+import { getAssetUrl } from '../utils/image';
 
 interface GioiThieuPageProps {
   onOpenQuoteModal: (serviceName?: string) => void;
@@ -73,12 +74,12 @@ export const GioiThieuPage: React.FC<GioiThieuPageProps> = ({ onOpenQuoteModal }
 
             <div className="grid grid-cols-2 gap-4">
               <img 
-                src="/images/cuoi1.jpg" 
+                src={getAssetUrl('images/cuoi1.jpg')} 
                 alt="Gia tiên Dã Quỳ" 
                 className="rounded-2xl aspect-4/5 object-cover shadow-md"
               />
               <img 
-                src="/images/cuoi3.jpg" 
+                src={getAssetUrl('images/cuoi3.jpg')} 
                 alt="Tiệc cưới Dã Quỳ" 
                 className="rounded-2xl aspect-4/5 object-cover shadow-md mt-6"
               />

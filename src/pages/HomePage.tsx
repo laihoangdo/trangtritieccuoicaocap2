@@ -30,6 +30,7 @@ import {
 } from '../data/mockData';
 import { ProductCard } from '../components/ProductCard';
 import { ProductItem } from '../types';
+import { getAssetUrl } from '../utils/image';
 
 interface HomePageProps {
   onOpenQuoteModal: (serviceName?: string) => void;
@@ -41,7 +42,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onOpenQuoteModal }) => {
 
   const bannerSlides = [
     {
-      image: '/images/cuoi1.jpg',
+      image: getAssetUrl('/images/cuoi1.jpg'),
       subheading: 'Dã Quỳ Decor & Event - Dịch Vụ Cưới Hỏi Trọn Gói TP.HCM',
       title: 'TRANG TRÍ GIA TIÊN CAO CẤP · GIÁ RẺ TIẾT KIỆM',
       desc: 'Trọn gói trang trí bàn thờ gia tiên, bàn họ 12 ghế Tiffany, ấm tách Minh Long và cổng hoa cưới chỉ từ 3.999.000đ',
@@ -51,7 +52,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onOpenQuoteModal }) => {
       badge: 'ƯU ĐÃI ĐẶC BIỆT MÙA CƯỚI 2026'
     },
     {
-      image: '/images/slide-1.jpg',
+      image: getAssetUrl('/images/slide-1.jpg'),
       subheading: 'Hơn 500+ Mẫu Hoa Lụa Nhập Khẩu Đẹp Tựa Hoa Tươi',
       title: 'THIẾT KẾ GIA TIÊN TÔNG SEN · VINTAGE & HIỆN ĐẠI',
       desc: 'Tùy biến phong cách riêng biệt, khảo sát đo đạc tại nhà miễn phí trên khắp 24 quận huyện TP.HCM',
@@ -61,7 +62,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onOpenQuoteModal }) => {
       badge: 'CAM KẾT GIỐNG MẪU 100%'
     },
     {
-      image: '/images/cuoi3.jpg',
+      image: getAssetUrl('/images/cuoi3.jpg'),
       subheading: 'Trọn Gói Cưới Hỏi Tiết Kiệm Thời Gian & Chi Phí',
       title: 'RẠP CƯỚI · SÂN KHẤU · BACKDROP · MÂM QUẢ',
       desc: 'Đồng bộ màu sắc từ lễ gia tiên tại nhà đến sảnh tiệc, mang lại dấu ấn viên mãn và khó quên nhất',
@@ -484,24 +485,24 @@ export const HomePage: React.FC<HomePageProps> = ({ onOpenQuoteModal }) => {
             <div className="grid grid-cols-2 gap-4">
               <div className="space-y-4">
                 <img 
-                  src="/images/cuoi1.jpg" 
+                  src={getAssetUrl('images/cuoi1.jpg')} 
                   alt="Trang trí gia tiên Dã Quỳ Decor" 
                   className="rounded-2xl shadow-md w-full aspect-4/5 object-cover"
                 />
                 <img 
-                  src="/images/cuoi3.jpg" 
+                  src={getAssetUrl('images/cuoi3.jpg')} 
                   alt="Gia tiên tông sen Dã Quỳ Decor" 
                   className="rounded-2xl shadow-md w-full aspect-square object-cover"
                 />
               </div>
               <div className="space-y-4 pt-8">
                 <img 
-                  src="/images/cuoi2.jpg" 
+                  src={getAssetUrl('images/cuoi2.jpg')} 
                   alt="Backdrop tiệc cưới Dã Quỳ Decor" 
                   className="rounded-2xl shadow-md w-full aspect-square object-cover"
                 />
                 <img 
-                  src="/images/cuoi4.jpg" 
+                  src={getAssetUrl('images/cuoi4.jpg')} 
                   alt="Cổng hoa cưới Dã Quỳ Decor" 
                   className="rounded-2xl shadow-md w-full aspect-4/5 object-cover"
                 />

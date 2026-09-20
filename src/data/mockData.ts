@@ -1,6 +1,7 @@
 import { ProductItem, ServiceCategory, PackageTier, Testimonial, BlogPost } from '../types';
+import { deepResolveImageUrls } from '../utils/image';
 
-export const BRAND_INFO = {
+const RAW_BRAND_INFO = {
   name: 'Dã Quỳ Decor & Event',
   shortName: 'Dã Quỳ Decor',
   slogan: 'Dịch vụ trang trí gia tiên, tiệc cưới trọn gói cao cấp & tiết kiệm',
@@ -26,7 +27,7 @@ export const BRAND_INFO = {
   logo510: '/images/logo-da-quy-510x368.png'
 };
 
-export const SERVICE_CATEGORIES: ServiceCategory[] = [
+const RAW_SERVICE_CATEGORIES: ServiceCategory[] = [
   {
     id: 'gia-tien-cong-hoa',
     name: 'TRANG TRÍ GIA TIÊN – CỔNG HOA',
@@ -93,7 +94,7 @@ export const SERVICE_CATEGORIES: ServiceCategory[] = [
   }
 ];
 
-export const PRODUCTS: ProductItem[] = [
+const RAW_PRODUCTS: ProductItem[] = [
   {
     id: 'gia-tien-tong-do-q11',
     name: 'Trang Trí Gia Tiên Tông Đỏ Truyền Thống Tại Quận 11',
@@ -437,7 +438,7 @@ export const PRODUCTS: ProductItem[] = [
   }
 ];
 
-export const PACKAGE_TIERS: PackageTier[] = [
+const RAW_PACKAGE_TIERS: PackageTier[] = [
   {
     id: 'goi-tiet-kiem',
     name: 'GÓI GIA TIÊN TIẾT KIỆM',
@@ -526,7 +527,7 @@ export const PACKAGE_TIERS: PackageTier[] = [
   }
 ];
 
-export const TESTIMONIALS: Testimonial[] = [
+const RAW_TESTIMONIALS: Testimonial[] = [
   {
     id: 'fb-1',
     coupleName: 'Minh Hoàng & Thu Trang',
@@ -573,7 +574,7 @@ export const TESTIMONIALS: Testimonial[] = [
   }
 ];
 
-export const BLOG_POSTS: BlogPost[] = [
+const RAW_BLOG_POSTS: BlogPost[] = [
   {
     id: 'kinh-nghiem-chon-mau-gia-tien',
     slug: 'kinh-nghiem-chon-mau-gia-tien-phu-hop-khong-gian-nha',
@@ -622,6 +623,14 @@ export const BLOG_POSTS: BlogPost[] = [
     ]
   }
 ];
+
+export const BRAND_INFO = deepResolveImageUrls(RAW_BRAND_INFO);
+export const SERVICE_CATEGORIES: ServiceCategory[] = deepResolveImageUrls(RAW_SERVICE_CATEGORIES);
+export const PRODUCTS: ProductItem[] = deepResolveImageUrls(RAW_PRODUCTS);
+export const PACKAGE_TIERS: PackageTier[] = deepResolveImageUrls(RAW_PACKAGE_TIERS);
+export const TESTIMONIALS: Testimonial[] = deepResolveImageUrls(RAW_TESTIMONIALS);
+export const BLOG_POSTS: BlogPost[] = deepResolveImageUrls(RAW_BLOG_POSTS);
+
 
 export const WORK_PROCESS = [
   {
